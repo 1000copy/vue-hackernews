@@ -1,30 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { domain, fromNow } from './filters'
 import App from './components/App.vue'
-import NewsView from './components/NewsView.vue'
-import ItemView from './components/ItemView.vue'
-import UserView from './components/UserView.vue'
-
+import FooView from './components/FooView.vue'
+import BarView from './components/BarView.vue'
 // install router
 Vue.use(Router)
-
-// register filters globally
-Vue.filter('fromNow', fromNow)
-Vue.filter('domain', domain)
 
 // routing
 var router = new Router()
 
 router.map({
-  '/news/:page': {
-    component: NewsView
+  '/foo': {
+    component: FooView
   },
-  '/user/:id': {
-    component: UserView
-  },
-  '/item/:id': {
-    component: ItemView
+  '/bar': {
+    component: BarView
   }
 })
 
@@ -33,7 +23,7 @@ router.beforeEach(function () {
 })
 
 router.redirect({
-  '*': '/news/1'
+  '*': '/foo'
 })
 
 router.start(App, '#app')
